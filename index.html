@@ -43,6 +43,13 @@
                 min-height: 90.91vh;
                 background: center center / cover no-repeat fixed;
             }
+            @media (max-width: 768px) {
+                body {
+                    transform: none;
+                    min-height: 100vh;
+                    overflow-y: auto;
+                }
+            }
             .text-shadow-lg {
                 text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
             }
@@ -58,6 +65,11 @@
                 grid-template-rows: repeat(6, 1fr);
                 gap: 0.75rem;
             }
+            @media (max-width: 640px) {
+                .calendar-grid {
+                    gap: 0.25rem;
+                }
+            }
             .calendar-day {
                 display: flex;
                 flex-direction: column;
@@ -67,6 +79,24 @@
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 border: 2px solid transparent;
                 background: rgba(15, 23, 42, 0.6);
+                min-height: 50px;
+            }
+            @media (max-width: 640px) {
+                .calendar-day {
+                    min-height: 40px;
+                }
+                .map-badge {
+                    width: 28px;
+                    height: 28px;
+                    font-size: 10px;
+                    margin-bottom: 2px;
+                }
+                .day-number {
+                    font-size: 10px;
+                }
+                .tooltip {
+                    display: none;
+                }
             }
             .calendar-day:hover {
                 background: rgba(30, 41, 59, 0.8);
@@ -95,6 +125,11 @@
             }
             .calendar-day:hover .map-badge {
                 transform: scale(1.1) rotate(5deg);
+            }
+            @media (max-width: 640px) {
+                .calendar-day:hover .map-badge {
+                    transform: none;
+                }
             }
             .day-number {
                 font-size: 12px;
@@ -227,8 +262,8 @@
             <p class="text-gray-300 text-sm text-shadow-sm">查看当前赛季的地图安排</p>
         </header>
 
-        <div class="flex gap-6 h-[720px]">
-            <div class="flex-1 min-w-0 flex flex-col h-full">
+        <div class="flex flex-col lg:flex-row gap-6 h-auto lg:h-[720px]">
+            <div class="flex-1 min-w-0 flex flex-col h-auto lg:h-full">
                 <div class="glass-effect rounded-xl p-4 shadow-lg flex flex-col h-full">
                     <div class="flex justify-between items-center mb-4 flex-shrink-0">
                         <h2 class="text-xl font-bold text-primary">2026年5月</h2>
@@ -290,7 +325,7 @@
                 </div>
             </div>
 
-            <div class="w-[360px] flex flex-col gap-4 h-full">
+            <div class="w-full lg:w-[360px] flex flex-col gap-4 h-auto lg:h-full">
                 <div class="glass-effect rounded-xl p-3 shadow-lg flex items-center justify-center">
                     <div class="text-center">
                         <div class="text-xl font-mono font-bold text-primary mb-1 text-shadow-sm" id="current-date-display">5月17日</div>
